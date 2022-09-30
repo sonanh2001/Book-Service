@@ -35,7 +35,7 @@ public class BookServiceImpl implements BookService {
     Book book = request.toBook();
     book.setIsActive(
         book.getReleaseAt() <= DateUtil.convertLocalDateTimeToInteger(LocalDateTime.now()));
-    return BookResponse.from(book);
+    return BookResponse.from(repository.save(book));
   }
 
   @Override
