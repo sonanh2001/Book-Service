@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -28,7 +29,7 @@ public class BookController {
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  public BookResponse create(@Valid CreateBookRequest request) {
+  public BookResponse create(@RequestBody @Valid CreateBookRequest request) {
     log.info("(create)name : {}", request.getName());
     return service.create(request);
   }
@@ -56,7 +57,7 @@ public class BookController {
 
   @PutMapping("/{id}")
   @ResponseStatus(HttpStatus.OK)
-  public BookResponse update(@PathVariable("id")long id, @Valid UpdateBookRequest request) {
+  public BookResponse update(@PathVariable("id")long id,@RequestBody @Valid UpdateBookRequest request) {
     log.info("(update)id : {}, name : {}", id, request.getName());
     return service.update(id, request);
   }
