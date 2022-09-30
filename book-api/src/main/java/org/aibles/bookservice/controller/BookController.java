@@ -10,6 +10,7 @@ import org.aibles.bookservice.dto.request.CreateBookRequest;
 import org.aibles.bookservice.dto.request.UpdateBookRequest;
 import org.aibles.bookservice.dto.response.BookResponse;
 import org.aibles.bookservice.service.BookService;
+import org.aibles.coreexceptionapi.configuration.GlobalExceptionHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(BOOK_API_URI)
 @RequiredArgsConstructor
+@GlobalExceptionHandler
 public class BookController {
 
   private final BookService service;

@@ -14,9 +14,11 @@ import org.aibles.bookservice.service.BookService;
 import org.aibles.bookservice.util.DateUtil;
 import org.aibles.coreexception.exception.ExistedException;
 import org.aibles.coreexception.exception.NotFoundException;
+import org.aibles.coreexceptionapi.configuration.GlobalExceptionHandler;
 
-@RequiredArgsConstructor
 @Slf4j
+@RequiredArgsConstructor
+@GlobalExceptionHandler
 public class BookServiceImpl implements BookService {
 
   private static final String BOOK_ID_FIELD = "bookId";
