@@ -9,7 +9,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>core-exception-api</artifactId>
+  <artifactId>i18n-service</artifactId>
 
   <dependencies>
     <dependency>
@@ -22,10 +22,9 @@
       <optional>true</optional>
     </dependency>
     <dependency>
-      <groupId>org.aibles.book-service</groupId>
-      <artifactId>core-exception</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
-      <scope>compile</scope>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.12.0</version>
     </dependency>
   </dependencies>
 
