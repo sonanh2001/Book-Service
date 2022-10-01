@@ -2,7 +2,7 @@ package org.aibles.coreexception.exception;
 
 import org.springframework.http.HttpStatus;
 
-public class NotFoundException extends BaseException{
+public class NotFoundException extends BaseException {
 
   public NotFoundException(String field, Object value, String type) {
     super();

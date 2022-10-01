@@ -2,7 +2,7 @@ package org.aibles.coreexception.exception;
 
 import org.springframework.http.HttpStatus;
 
-public class InternalServerException extends BaseException{
+public class InternalServerException extends BaseException {
 
   public InternalServerException() {
     super();

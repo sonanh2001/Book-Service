@@ -1,6 +1,6 @@
 package org.aibles.coreexception.exception;
 
-public class ExistedException extends BadRequestException{
+public class ExistedException extends BadRequestException {
 
   public ExistedException(String field, Object value, String type) {
     super();
