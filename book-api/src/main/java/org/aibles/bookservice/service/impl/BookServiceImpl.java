@@ -15,6 +15,7 @@ import org.aibles.bookservice.util.DateUtil;
 import org.aibles.coreexception.exception.ExistedException;
 import org.aibles.coreexception.exception.NotFoundException;
 import org.aibles.coreexceptionapi.configuration.GlobalExceptionHandler;
+import org.springframework.scheduling.annotation.Scheduled;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -36,6 +37,18 @@ public class BookServiceImpl implements BookService {
     book.setIsActive(
         book.getReleaseAt() <= DateUtil.convertLocalDateTimeToInteger(LocalDateTime.now()));
     return BookResponse.from(repository.save(book));
+  }
+
+  @Override
+  @Scheduled(cron = "0 0 0 * * ?")
+  public void checkIsActive() {
+    List<Book> books =
+        repository.findBookByReleaseAtAfter(
+            DateUtil.convertLocalDateTimeToInteger(LocalDateTime.now()));
+    books.forEach((book) -> {
+      book.setIsActive(true);
+      repository.save(book);
+    });
   }
 
   @Override

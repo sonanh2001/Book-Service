@@ -15,6 +15,11 @@ public interface BookService {
   BookResponse create(CreateBookRequest request);
 
   /**
+   * check active status of a book
+   */
+  void checkIsActive();
+
+  /**
    * delete a book by id
    * @param id - id sent from client
    */

@@ -2,6 +2,7 @@ package org.aibles.bookservice.dto.request;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import lombok.Data;
 import org.aibles.bookservice.entity.Book;
 
@@ -9,6 +10,7 @@ import org.aibles.bookservice.entity.Book;
 public class CreateBookRequest {
 
   @NotBlank(message = "Name.NotBlank.message")
+  @Size(max = 255, message = "Name.MaxSize.message")
   private String name;
 
   @NotBlank(message = "Description.NotBlank.message")
