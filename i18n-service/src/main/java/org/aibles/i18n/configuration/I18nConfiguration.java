@@ -21,7 +21,8 @@ public class I18nConfiguration {
   public MessageSource messageSource() {
     ReloadableResourceBundleMessageSource messageSource =
         new ReloadableResourceBundleMessageSource();
-    messageSource.setBasename("classpath:/i18n/message");
+    messageSource.setBasenames(
+        "classpath:/i18n/message_validation", "classpath:/i18n/message_core_exception");
     messageSource.setDefaultEncoding("UTF-8");
     return messageSource;
   }

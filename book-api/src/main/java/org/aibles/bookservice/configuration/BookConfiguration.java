@@ -3,7 +3,7 @@ package org.aibles.bookservice.configuration;
 import org.aibles.bookservice.repository.BookRepository;
 import org.aibles.bookservice.service.BookService;
 import org.aibles.bookservice.service.impl.BookServiceImpl;
-import org.aibles.i18n.configuration.GlobalI18nConfiguration;
+import org.aibles.i18n.configuration.EnableI18nConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +14,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @ComponentScan(basePackages = {"org.aibles.bookservice.repository"})
 @EnableJpaRepositories(basePackages = {"org.aibles.bookservice.repository"})
 @EnableScheduling
-@GlobalI18nConfiguration
+@EnableI18nConfiguration
 public class BookConfiguration {
   @Bean
   public BookService bookService(BookRepository repository) {
