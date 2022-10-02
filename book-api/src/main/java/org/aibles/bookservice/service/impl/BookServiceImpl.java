@@ -42,6 +42,7 @@ public class BookServiceImpl implements BookService {
   @Override
   @Scheduled(cron = "0 0 0 * * ?")
   public void checkIsActive() {
+    log.info("(checkIsActive)");
     List<Book> books =
         repository.findBookByReleaseAtAfter(
             DateUtil.convertLocalDateTimeToInteger(LocalDateTime.now()));
