@@ -16,6 +16,7 @@ import org.aibles.coreexception.exception.ExistedException;
 import org.aibles.coreexception.exception.NotFoundException;
 import org.aibles.coreexceptionapi.configuration.EnableExceptionHandler;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -28,6 +29,7 @@ public class BookServiceImpl implements BookService {
   private final BookRepository repository;
 
   @Override
+  @Transactional
   public BookResponse create(CreateBookRequest request) {
     log.info("(create)name : {}", request.getName());
     if (repository.existsByName(request.getName())) {
@@ -41,6 +43,7 @@ public class BookServiceImpl implements BookService {
 
   @Override
   @Scheduled(cron = "0 0 0 * * ?")
+  @Transactional
   public void checkIsActive() {
     log.info("(checkIsActive)");
     List<Book> books =
@@ -53,6 +56,7 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
+  @Transactional
   public void deleteById(long id) {
     log.info("(deleteById)id : {}", id);
     if (repository.existsById(id)) {
@@ -62,6 +66,7 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
+  @Transactional
   public BookResponse getById(long id) {
     log.info("(getById)id : {}", id);
     return repository
@@ -71,12 +76,14 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
+  @Transactional
   public List<BookResponse> list() {
     log.info("(list)");
     return repository.findAll().stream().map(BookResponse::from).collect(Collectors.toList());
   }
 
   @Override
+  @Transactional
   public BookResponse update(long id, UpdateBookRequest request) {
     log.info("(update)id : {}, name : {}", id, request.getName());
     Book book =
