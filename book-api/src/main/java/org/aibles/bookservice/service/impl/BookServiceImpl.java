@@ -1,5 +1,6 @@
 package org.aibles.bookservice.service.impl;
 
+import java.awt.print.Pageable;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,7 +16,7 @@ import org.aibles.bookservice.util.DateUtil;
 import org.aibles.coreexception.exception.ExistedException;
 import org.aibles.coreexception.exception.NotFoundException;
 import org.aibles.coreexceptionapi.configuration.EnableExceptionHandler;
-import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
@@ -42,17 +43,14 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
-  @Scheduled(cron = "0 0 0 * * ?")
   @Transactional
-  public void checkIsActive() {
-    log.info("(checkIsActive)");
-    List<Book> books =
-        repository.findBookByReleaseAtAfter(
-            DateUtil.convertLocalDateTimeToInteger(LocalDateTime.now()));
-    books.forEach((book) -> {
-      book.setIsActive(true);
-      repository.save(book);
-    });
+  public List<Book> handleReleaseBook(Integer time, int page, int size) {
+    log.info("(handleReleaseBook)time : {}, page : {}, size : {}", time, page, size);
+    Pageable pageable = (Pageable) PageRequest.of(page, size);
+    List<Book> books = repository.findReleaseBook(time, pageable);
+    books = books.parallelStream().peek(book -> book.setIsActive(true)).collect(Collectors.toList());
+    books = repository.saveAll(books);
+    return books;
   }
 
   @Override

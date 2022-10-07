@@ -3,7 +3,7 @@ package org.aibles.bookservice.configuration;
 import org.aibles.bookservice.repository.BookRepository;
 import org.aibles.bookservice.service.BookService;
 import org.aibles.bookservice.service.impl.BookServiceImpl;
-import org.aibles.i18n.configuration.EnableI18nConfiguration;
+import org.aibles.coreexceptionapi.configuration.EnableI18nConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

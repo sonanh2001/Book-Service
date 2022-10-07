@@ -1,4 +1,4 @@
-package org.aibles.i18n.constants;
+package org.aibles.coreexceptionapi.constants;
 
 import java.util.Arrays;
 import java.util.List;

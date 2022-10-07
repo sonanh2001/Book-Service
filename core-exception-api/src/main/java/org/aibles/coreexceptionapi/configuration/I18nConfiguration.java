@@ -1,7 +1,6 @@
-package org.aibles.i18n.configuration;
+package org.aibles.coreexceptionapi.configuration;
 
-import java.util.Locale;
-import org.aibles.i18n.resolver.HeaderLocaleResolver;
+import org.aibles.coreexceptionapi.resolver.HeaderLocaleResolver;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,9 +11,7 @@ import org.springframework.web.servlet.LocaleResolver;
 public class I18nConfiguration {
   @Bean
   public LocaleResolver localeResolver() {
-    HeaderLocaleResolver headerLocaleResolver = new HeaderLocaleResolver();
-    headerLocaleResolver.setDefaultLocale(new Locale("en"));
-    return headerLocaleResolver;
+    return new HeaderLocaleResolver();
   }
 
   @Bean
@@ -22,7 +19,7 @@ public class I18nConfiguration {
     ReloadableResourceBundleMessageSource messageSource =
         new ReloadableResourceBundleMessageSource();
     messageSource.setBasenames(
-        "classpath:/i18n/message_validation", "classpath:/i18n/message_core_exception");
+        "classpath:/i18n/book_api_message", "classpath:/i18n/core_exception_message");
     messageSource.setDefaultEncoding("UTF-8");
     return messageSource;
   }

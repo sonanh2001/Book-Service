@@ -7,7 +7,6 @@
     <module>book-api</module>
 		<module>core-exception</module>
     <module>core-exception-api</module>
-    <module>i18n-service</module>
   </modules>
   <parent>
 		<groupId>org.springframework.boot</groupId>

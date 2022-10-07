@@ -1,4 +1,4 @@
-package org.aibles.i18n.configuration;
+package org.aibles.coreexceptionapi.configuration;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
