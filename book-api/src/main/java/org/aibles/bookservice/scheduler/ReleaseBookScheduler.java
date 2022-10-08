@@ -18,10 +18,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class ReleaseBookScheduler {
 
   private final BookService service;
-  @Value("application.book_scheduler.release_book.enable:true")
+  @Value("${application.book_scheduler.release_book.enable:true}")
   private Boolean enable;
 
-  @Value("application.book_scheduler.release_book.size:500")
+  @Value("${application.book_scheduler.release_book.size:500}")
   private int size;
 
   @Scheduled(cron = "${application.book_scheduler.release_book.cron:0 0 0 * * ?}")
