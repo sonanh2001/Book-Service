@@ -32,8 +32,8 @@ public class ReleaseBookScheduler {
       return;
     }
     try {
+      int page = 0;
       while(true) {
-        int page = 0;
         List<Book> books = service.handleReleaseBook(DateUtil.convertLocalDateTimeToInteger(
             LocalDateTime.now()), page, size);
         if(books.size() < size) {

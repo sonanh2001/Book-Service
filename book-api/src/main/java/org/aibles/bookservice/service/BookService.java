@@ -19,8 +19,8 @@ public interface BookService {
    * handle books up to release date
    * @param time - time of moment user need to check release books
    * @param page - page from release book list
-   * @param size - size of this @param page
-   * @return a list of handled book in that page
+   * @param size - size of @param page
+   * @return a list of handled book in @param page
    */
   List<Book> handleReleaseBook(Integer time, int page, int size);
   /**
@@ -32,7 +32,7 @@ public interface BookService {
   /**
    * get a book by id
    * @param id - id sent from client
-   * @return - a response of an book
+   * @return - a response of a book
    */
   BookResponse getById(long id);
 
